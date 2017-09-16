@@ -7,7 +7,6 @@ node('php'){
     stage('Fetch') {
         checkout scm
     }
-   
     
     stage('Build'){
         sh 'composer install --prefer-dist --no-dev --ignore-platform-reqs'
@@ -23,12 +22,11 @@ node('php'){
             }
         )
     }
-    
     stage('Docker Build') {
-        sh 'docker build -t churrops/todoapi:$BUILD_NUMBER .'
+        sh 'docker build -t jeffersonsouza/todoapi:$BUILD_NUMBER .'
     }
     
     stage('Docker Ship') {
-        sh 'docker push churrops/todoapi:$BUILD_NUMBER'
+        sh 'docker push jeffersonsouza/todoapi:$BUILD_NUMBER'
     }
 }
