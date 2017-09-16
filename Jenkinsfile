@@ -9,7 +9,7 @@ node('php'){
     }
     
     stage('Build'){
-        sh '/usr/local/bin/composer install --prefer-dist --no-dev --ignore-platform-reqs'
+        sh 'composer install --prefer-dist --no-dev --ignore-platform-reqs'
         sh 'php artisan config:cache'
         // sh 'php artisan route:cache'
     }
